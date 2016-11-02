@@ -2,7 +2,7 @@
 DonantesMalagaBot es un Bot de Telegram basado en <a href="https://github.com/eternnoir/pyTelegramBotAPI">pyTelegramBotAPI</a> que facilita informacion a los donantes de Malaga acerca de los lugares donde se puede donar en el dia de hoy o en los proximos dias. Tambien lleva la cuenta sobre cuando se ha donado por ultima vez y permite al donante saber exactamente cuando puede volver a donar.
 
 <p>
-Puedes iniciar <a href="https://telegram.me/DonantesMalagaBot">DonantesMalagaBot</a> en Telegram pinchando en el siguiente enlace - https://telegram.me/UVIBot
+Puedes iniciar <a href="https://telegram.me/DonantesMalagaBot">DonantesMalagaBot</a> en Telegram pinchando en el siguiente enlace - https://telegram.me/DonantesMalagaBot
 </p>
 
 ## Comandos soportados
