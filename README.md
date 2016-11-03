@@ -20,7 +20,13 @@ Para el desarrollo de este Bot de Telegram se han utilizado las siguientes libre
 
 - **pyTelegramBotAPI** - hace de interfaz con la API de Telegram y proporciona toda la funcionalidad requerida para poder interactuar con Telegram
 - **BeautifulSoup** - utilizado para parsear la informacion de los puntos de donacion de la pagina web de www.donantesmalaga.org
-- **MySQLdb** - para interactuar con una base de datos MySQL que guarda la fecha de ultima de donacion del donante bajo demanda
+- **MySQL-python** - para interactuar con una base de datos MySQL que guarda la fecha de ultima de donacion del donante bajo demanda
+
+```
+$ pip install pyTelegramBotAPI
+$ pip install bs4
+$ pip install MySQL-python
+```
 
 ## Contacto
 
