@@ -83,17 +83,14 @@ def get_incoming_locations(message):
     
 @bot.message_handler(commands=['hedonadohoy'])
 def create_donation_checkpoint(message):
-    user_id = message.from_user.id          # To identify the user
-    chat_id = message.chat.id               # To be able to send the notification afterwards
-    date_str = time.strftime("%d/%m/%Y")    # The date in string format
-    execute_insert("INSERT INTO donations (user_id, chat_id, date, created_date) VALUES({0}, {1}, '{2}', UNIX_TIMESTAMP(NOW())) ON DUPLICATE KEY UPDATE user_id={0}, chat_id={1}, date='{2}', created_date=UNIX_TIMESTAMP(NOW())".format(user_id, chat_id, date_str))
-    bot.reply_to(message, "De acuerdo, queda anotado que has donado el {0}".format(date_str))
+    execute_insert("INSERT INTO donations (user_id, last_donation_unix_timestamp, notified) VALUES({0}, UNIX_TIMESTAMP(), 0) ON DUPLICATE KEY UPDATE user_id={0}, last_donation_unix_timestamp=UNIX_TIMESTAMP(), notified=0".format(message.from_user.id))
+    bot.reply_to(message, "De acuerdo, queda anotado que has donado el {0}".format(time.strftime("%d/%m/%Y")))
     
 @bot.message_handler(commands=['puedodonar'])
 def can_donate_today(message):
     connection = get_db_connection()
     cursor = connection.cursor()
-    cursor.execute("SELECT date FROM donations WHERE user_id={0}".format(message.from_user.id))
+    cursor.execute("SELECT FROM_UNIXTIME(last_donation_unix_timestamp, '%d/%m/%Y') FROM donations WHERE user_id={0}".format(message.from_user.id))
     row = cursor.fetchone()
     if cursor.rowcount > 0:
         last_donation_str = row[0]
